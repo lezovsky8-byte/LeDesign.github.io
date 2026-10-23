@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeDesign – Creative Web Design</title>
+<meta name="description" content="LeDesign: jasa desain website bisnis, landing page, dan redesign. AI Bikin Cepat, Saya Bikin Tepat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06101e; --bg2:#0b1b33; --teal:#2ec4c9; --mint:#7ee8c4; --blue:#3b6fd4;
+  --text:#e8f0f6; --muted:#93a8bb; --glass:rgba(255,255,255,.05); --edge:rgba(255,255,255,.12);
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.7;font-size:17px;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+.wrap{width:min(1100px,100% - 40px);margin-inline:auto;position:relative}
+h1,h2,h3{font-family:var(--head);line-height:1.08;letter-spacing:-.025em;color:#fff}
+h2{font-size:clamp(2rem,4.6vw,3.2rem);margin-bottom:16px}
+p{max-width:60ch;color:var(--muted)}
+section{padding:110px 0;position:relative}
+.grad{background:linear-gradient(100deg,var(--teal),var(--mint) 50%,var(--teal));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--teal),var(--mint));z-index:30}
+
+header{position:fixed;inset:0 0 auto 0;z-index:20;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+header.solid{background:rgba(6,16,30,.78);backdrop-filter:blur(14px);border-color:var(--edge)}
+.bar{display:flex;align-items:center;justify-content:space-between;min-height:70px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--head);font-size:1.35rem;color:#fff}
+.brand b{font-weight:800}.brand span{font-weight:500}
+.brand svg{transition:transform .8s var(--ease)}
+.brand:hover svg{transform:rotate(180deg)}
+nav ul{display:flex;gap:4px;list-style:none;padding:0}
+nav a{position:relative;display:block;padding:8px 14px;text-decoration:none;font-weight:500;font-size:.95rem;color:var(--muted);transition:color .3s}
+nav a::after{content:"";position:absolute;left:14px;right:14px;bottom:3px;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+nav a:hover,nav a.on{color:#fff}
+nav a:hover::after,nav a.on::after{transform:scaleX(1)}
+
+.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 80px;overflow:hidden}
+.aurora{position:absolute;inset:0;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:drift 16s ease-in-out infinite alternate}
+.b1{width:520px;height:520px;background:var(--blue);top:-120px;left:-100px}
+.b2{width:460px;height:460px;background:var(--teal);right:-120px;top:20%;animation-delay:-5s;opacity:.38}
+.b3{width:380px;height:380px;background:#2a8f7d;bottom:-140px;left:35%;animation-delay:-9s;opacity:.32}
+@keyframes drift{to{transform:translate(70px,50px) scale(1.18)}}
+.gridlines{position:absolute;inset:0;background-image:linear-gradient(var(--edge) 1px,transparent 1px),linear-gradient(90deg,var(--edge) 1px,transparent 1px);background-size:64px 64px;opacity:.22;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 20%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 40%,#000 20%,transparent 70%)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
+h1{font-size:clamp(2.7rem,7.4vw,5.6rem);font-weight:800}
+h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+h1 .ln>span{display:block;animation:rise 1s var(--ease) both}
+h1 .ln:nth-child(2)>span{animation-delay:.18s}
+@keyframes rise{from{transform:translateY(110%)}to{transform:none}}
+.lead{margin:26px 0 34px;font-size:1.15rem;animation:fade 1s .5s both}
+.btns{display:flex;gap:14px;flex-wrap:wrap;animation:fade 1s .7s both}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.btn{position:relative;overflow:hidden;display:inline-block;padding:15px 28px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--edge);color:#fff;font-family:var(--body);font-size:1rem;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s}
+.btn.primary{background:linear-gradient(120deg,var(--teal),#2a8fd0);border-color:transparent;color:#04121f}
+.btn.primary::before{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .7s var(--ease)}
+.btn.primary:hover::before{left:130%}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 34px -10px rgba(46,196,201,.55)}
+.btn.ghost{background:var(--glass)}
+
+.stack{position:relative;display:grid;gap:18px;animation:fade 1s .5s both}
+.card{background:var(--glass);border:1px solid var(--edge);border-radius:20px;padding:24px 26px;backdrop-filter:blur(12px)}
+.stack .card{animation:float 6s ease-in-out infinite}
+.stack .card:nth-child(2){animation-delay:-3s;margin-left:34px}
+@keyframes float{50%{transform:translateY(-12px)}}
+.card strong{font-family:var(--head);font-size:1.3rem;color:#fff;display:block;margin-bottom:4px}
+.card span{color:var(--muted);font-size:.97rem}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--mint);margin-right:10px;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(126,232,196,.6)}100%{box-shadow:0 0 0 12px transparent}}
+
+.marquee{overflow:hidden;border-block:1px solid var(--edge);background:rgba(255,255,255,.025);padding:20px 0}
+.track{display:flex;gap:48px;width:max-content;animation:scroll 32s linear infinite;font-family:var(--head);font-size:1.5rem;font-weight:700;color:rgba(255,255,255,.55)}
+.track span{display:flex;align-items:center;gap:48px;white-space:nowrap}
+.track span::after{content:"";width:10px;height:10px;background:var(--teal);transform:rotate(45deg)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.vals{display:grid;gap:16px}
+.vals .card{transition:transform .4s var(--ease),border-color .4s}
+.vals .card:hover{transform:translateX(10px);border-color:var(--teal)}
+
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.work{--mx:50%;--my:50%;position:relative;border-radius:22px;border:1px solid var(--edge);background:var(--glass);overflow:hidden;transition:transform .5s var(--ease),border-color .4s}
+.work::before{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at var(--mx) var(--my),rgba(46,196,201,.22),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none}
+.work:hover{transform:translateY(-10px);border-color:rgba(46,196,201,.6)}
+.work:hover::before{opacity:1}
+.shotbox{overflow:hidden;border-bottom:1px solid var(--edge)}
+.shot{display:block;width:100%;height:auto;transition:transform .8s var(--ease)}
+.work:hover .shot{transform:scale(1.06)}
+.txt{padding:24px 26px 28px;position:relative}
+.work h3{font-size:1.35rem;margin-bottom:6px}
+.work dt{font-weight:600;color:var(--mint);margin-top:12px;font-size:.92rem}
+.work dd{margin:0;color:var(--muted);font-size:.97rem}
+
+.svc{display:grid;grid-template-columns:repeat(3,1fr);margin-top:44px;border-top:1px solid var(--edge)}
+.svc div{position:relative;padding:34px 30px 34px 0;transition:padding .5s var(--ease)}
+.svc div::before{content:"";position:absolute;top:-1px;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--teal),var(--mint));transition:width .6s var(--ease)}
+.svc div:hover::before{width:100%}
+.svc div:hover{padding-left:14px}
+.svc h3{font-size:1.45rem;margin-bottom:10px}
+
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.channels{margin-top:26px;display:grid;gap:12px}
+.channels a{display:inline-flex;width:fit-content;font-weight:600;color:#fff;text-decoration:none;border-bottom:1px solid var(--teal);padding-bottom:2px;transition:color .3s,letter-spacing .4s}
+.channels a:hover{color:var(--mint);letter-spacing:.02em}
+form{display:grid;gap:18px;padding:30px;border-radius:22px;background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(12px)}
+label{display:grid;gap:7px;font-weight:600;font-size:.95rem;color:#fff}
+input,textarea{font:inherit;padding:13px 16px;border:1px solid var(--edge);border-radius:12px;background:rgba(255,255,255,.06);color:#fff;transition:border-color .3s,box-shadow .3s,background .3s}
+input::placeholder,textarea::placeholder{color:#6f8499}
+input:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(46,196,201,.18);background:rgba(255,255,255,.09)}
+textarea{min-height:130px;resize:vertical}
+.note{font-size:.88rem}
+footer{padding:30px 0;border-top:1px solid var(--edge);color:var(--muted);font-size:.92rem}
+
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  section{padding:76px 0}
+  .hero-grid,.about,.contact{grid-template-columns:1fr;gap:36px}
+  .works,.svc{grid-template-columns:1fr}
+  .svc div{padding-right:0}
+  .stack .card:nth-child(2){margin-left:0}
+  .bar{flex-direction:column;align-items:flex-start;padding:10px 0;gap:0}
+  nav{max-width:100%;overflow-x:auto}
+  nav ul{width:max-content}
+  .hero{padding-top:150px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header id="top">
+  <div class="wrap bar">
+    <a class="brand" href="#beranda" aria-label="LeDesign, ke beranda">
+      <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 36 20 20 37 4 20Z" fill="none" stroke="#2ec4c9" stroke-width="3" stroke-linejoin="round"/><path d="M13 27 27 13M27 13H17M27 13v10" fill="none" stroke="#7ee8c4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Le<b>Design</b></span>
+    </a>
+    <nav aria-label="Menu utama">
+      <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#tentang">Tentang Saya</a></li>
+        <li><a href="#portofolio">Portofolio</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="beranda">
+  <div class="aurora" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="gridlines"></div></div>
+  <div class="wrap hero-grid">
+    <div>
+      <h1><span class="ln"><span>AI Bikin Cepat,</span></span><span class="ln"><span class="grad">Saya Bikin Tepat.</span></span></h1>
+      <p class="lead">Saya web designer yang memadukan kreativitas manusia dengan AI, supaya website bisnis kamu selesai lebih cepat dan tetap dirancang dengan sengaja.</p>
+      <div class="btns">
+        <a class="btn primary" href="#kontak">Hubungi saya</a>
+        <a class="btn ghost" href="#portofolio">Lihat karya</a>
+      </div>
+    </div>
+    <div class="stack" aria-label="Cara kerja">
+      <div class="card"><strong><i class="dot"></i>AI mengerjakan yang cepat</strong><span>Draf, variasi layout, dan kerangka konten selesai dalam hitungan menit.</span></div>
+      <div class="card"><strong><i class="dot"></i>Saya memastikan yang tepat</strong><span>Pilihan desain, bahasa, dan detail akhir diputuskan manusia, sesuai tujuan bisnismu.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Website bisnis</span><span>Landing page</span><span>Redesign</span><span>Responsif di semua perangkat</span><span>Cepat dibuka</span><span>Bersih dan jelas</span>
+    <span>Website bisnis</span><span>Landing page</span><span>Redesign</span><span>Responsif di semua perangkat</span><span>Cepat dibuka</span><span>Bersih dan jelas</span>
+  </div>
+</div>
+
+<section id="tentang">
+  <div class="wrap about">
+    <div class="rv">
+      <h2>Tentang saya</h2>
+      <p>LeDesign adalah studio desain website yang saya kelola sendiri. Website ini sekaligus bukti langsung kemampuan saya: dirancang, ditulis, dan dipublikasikan sendiri.</p>
+    </div>
+    <div class="vals">
+      <div class="card rv" style="--d:.1s"><strong>Latar belakang</strong><span>Web designer dengan fokus pada tampilan bersih dan mudah dipakai.</span></div>
+      <div class="card rv" style="--d:.2s"><strong>Keahlian</strong><span>Desain website bisnis, landing page, dan redesign website lama.</span></div>
+      <div class="card rv" style="--d:.3s"><strong>Nilai yang saya bawa</strong><span>Kreativitas manusia ditambah kecepatan AI.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="portofolio">
+  <div class="wrap">
+    <h2 class="rv">Portofolio</h2>
+    <p class="rv">Contoh karya beserta tujuan dan solusi desainnya. Ganti isi kartu ini dengan proyek aslimu.</p>
+    <div class="works">
+      <article class="work rv">
+        <div class="shotbox"><svg class="shot" viewBox="0 0 400 220" role="img" aria-label="Ilustrasi halaman menu kafe di HP dengan tombol petunjuk arah"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#12315c"/><stop offset="1" stop-color="#1b8f9f"/></linearGradient></defs><rect width="400" height="220" fill="url(#g1)"/><g fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="2"><circle cx="70" cy="112" r="44"/><circle cx="70" cy="112" r="70"/></g><path d="M48 98h44v26a18 18 0 0 1-18 18h-8a18 18 0 0 1-18-18Z" fill="#fff" fill-opacity=".92"/><path d="M92 104h6a8 8 0 0 1 0 16h-6" fill="none" stroke="#fff" stroke-width="4"/><path d="M60 88c-4-6 4-8 0-14M76 88c-4-6 4-8 0-14" stroke="#7ee8c4" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="170" y="12" width="130" height="200" rx="20" fill="#06101e" stroke="#fff" stroke-opacity=".6" stroke-width="3"/><rect x="184" y="28" width="60" height="9" rx="4" fill="#fff"/><g><rect x="184" y="50" width="30" height="26" rx="6" fill="#2ec4c9" fill-opacity=".75"/><rect x="222" y="53" width="50" height="7" rx="3" fill="#fff" fill-opacity=".85"/><rect x="222" y="66" width="30" height="6" rx="3" fill="#fff" fill-opacity=".35"/><rect x="184" y="84" width="30" height="26" rx="6" fill="#7ee8c4" fill-opacity=".75"/><rect x="222" y="87" width="50" height="7" rx="3" fill="#fff" fill-opacity=".85"/><rect x="222" y="100" width="30" height="6" rx="3" fill="#fff" fill-opacity=".35"/><rect x="184" y="118" width="30" height="26" rx="6" fill="#3b6fd4" fill-opacity=".85"/><rect x="222" y="121" width="50" height="7" rx="3" fill="#fff" fill-opacity=".85"/><rect x="222" y="134" width="30" height="6" rx="3" fill="#fff" fill-opacity=".35"/></g><rect x="184" y="168" width="102" height="30" rx="15" fill="#7ee8c4"/><text x="235" y="187" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#04121f">Petunjuk arah</text><g font-family="sans-serif" font-size="9" fill="#fff"><rect x="312" y="62" width="78" height="24" rx="12" fill="#fff" fill-opacity=".16"/><text x="351" y="77" text-anchor="middle">Menu 1 halaman</text><rect x="312" y="96" width="78" height="24" rx="12" fill="#fff" fill-opacity=".16"/><text x="351" y="111" text-anchor="middle">Arah selalu ada</text></g></svg></div>
+        <div class="txt"><h3>Kopi Senja</h3>
+          <dl><dt>Tujuan</dt><dd>Menampilkan menu dan lokasi agar pelanggan baru mudah datang.</dd>
+          <dt>Solusi</dt><dd>Menu dibuat satu halaman, tombol petunjuk arah selalu terlihat di HP.</dd></dl></div>
+      </article>
+      <article class="work rv" style="--d:.12s">
+        <div class="shotbox"><svg class="shot" viewBox="0 0 400 220" role="img" aria-label="Ilustrasi landing page kelas online dengan satu pesan utama, bukti peserta, dan formulir daftar singkat"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b8f9f"/><stop offset="1" stop-color="#4cbf98"/></linearGradient></defs><rect width="400" height="220" fill="url(#g2)"/><rect x="24" y="20" width="352" height="182" rx="14" fill="#06101e" fill-opacity=".9"/><g fill="#fff" fill-opacity=".5"><circle cx="42" cy="36" r="4"/><circle cx="54" cy="36" r="4"/><circle cx="66" cy="36" r="4"/></g><rect x="44" y="60" width="150" height="12" rx="6" fill="#fff"/><rect x="44" y="80" width="110" height="12" rx="6" fill="#fff"/><rect x="44" y="104" width="140" height="6" rx="3" fill="#fff" fill-opacity=".4"/><rect x="44" y="116" width="118" height="6" rx="3" fill="#fff" fill-opacity=".4"/><circle cx="54" cy="150" r="11" fill="#2ec4c9" stroke="#06101e" stroke-width="2"/><circle cx="70" cy="150" r="11" fill="#7ee8c4" stroke="#06101e" stroke-width="2"/><circle cx="86" cy="150" r="11" fill="#3b6fd4" stroke="#06101e" stroke-width="2"/><text x="104" y="154" font-family="sans-serif" font-size="11" fill="#7ee8c4">★★★★★</text><text x="44" y="182" font-family="sans-serif" font-size="9" fill="#fff" fill-opacity=".65">Bukti peserta</text><rect x="218" y="54" width="140" height="134" rx="12" fill="#fff" fill-opacity=".08" stroke="#fff" stroke-opacity=".25"/><rect x="232" y="70" width="112" height="20" rx="6" fill="#fff" fill-opacity=".14"/><rect x="232" y="98" width="112" height="20" rx="6" fill="#fff" fill-opacity=".14"/><rect x="232" y="136" width="112" height="30" rx="15" fill="#7ee8c4"/><text x="288" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#04121f">Daftar</text></svg></div>
+        <div class="txt"><h3>Kelas Online Bahasa</h3>
+          <dl><dt>Tujuan</dt><dd>Mengubah pengunjung iklan menjadi pendaftar kelas.</dd>
+          <dt>Solusi</dt><dd>Satu pesan utama, bukti peserta, dan formulir daftar singkat.</dd></dl></div>
+      </article>
+      <article class="work rv" style="--d:.24s">
+        <div class="shotbox"><svg class="shot" viewBox="0 0 400 220" role="img" aria-label="Ilustrasi sebelum dan sesudah redesign: tampilan lama padat, tampilan baru ringan dengan kategori produk rapi"><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1e3a"/><stop offset="1" stop-color="#3b6fd4"/></linearGradient></defs><rect width="400" height="220" fill="url(#g3)"/><rect x="52" y="12" width="100" height="184" rx="16" fill="#cfd8e0"/><rect x="62" y="22" width="80" height="12" rx="4" fill="#5b6b7a"/><g fill="#9aa8b5"><rect x="62" y="40" width="38" height="20"/><rect x="104" y="40" width="38" height="34" fill="#b8c3cd"/><rect x="62" y="64" width="38" height="30" fill="#b8c3cd"/><rect x="104" y="78" width="38" height="16"/><rect x="62" y="98" width="80" height="14"/><rect x="62" y="116" width="36" height="24" fill="#b8c3cd"/><rect x="102" y="116" width="40" height="24"/><rect x="62" y="144" width="80" height="10" fill="#b8c3cd"/><rect x="62" y="158" width="50" height="10"/></g><rect x="62" y="174" width="80" height="14" fill="#d9534f" fill-opacity=".7"/><path d="M170 104h52m-10-10 10 10-10 10" stroke="#7ee8c4" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="248" y="12" width="100" height="184" rx="16" fill="#06101e" stroke="#fff" stroke-opacity=".6" stroke-width="3"/><rect x="260" y="26" width="50" height="8" rx="4" fill="#fff"/><rect x="260" y="44" width="28" height="12" rx="6" fill="#7ee8c4"/><rect x="292" y="44" width="28" height="12" rx="6" fill="#fff" fill-opacity=".25"/><g fill="#2ec4c9" fill-opacity=".45"><rect x="260" y="66" width="38" height="36" rx="6"/><rect x="302" y="66" width="38" height="36" rx="6"/><rect x="260" y="114" width="38" height="36" rx="6"/><rect x="302" y="114" width="38" height="36" rx="6"/></g><g fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="2"><path d="M279 74l8 10-8 10-8-10Z"/><path d="M321 74l8 10-8 10-8-10Z"/><path d="M279 122l8 10-8 10-8-10Z"/><path d="M321 122l8 10-8 10-8-10Z"/></g><rect x="260" y="160" width="76" height="24" rx="12" fill="#7ee8c4"/><g font-family="sans-serif" font-size="10" fill="#fff" fill-opacity=".85" text-anchor="middle"><text x="102" y="212">Sebelum</text><text x="298" y="212">Sesudah</text></g></svg></div>
+        <div class="txt"><h3>Toko Batik Nusa</h3>
+          <dl><dt>Tujuan</dt><dd>Website lama lambat dan sulit dibuka lewat HP.</dd>
+          <dt>Solusi</dt><dd>Tata letak baru yang ringan, foto dikompres, kategori produk dirapikan.</dd></dl></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="layanan">
+  <div class="wrap">
+    <h2 class="rv">Layanan</h2>
+    <p class="rv">Tiga jenis pekerjaan yang paling sering saya kerjakan.</p>
+    <div class="svc">
+      <div class="rv"><h3>Website bisnis</h3><p>Website lengkap untuk usaha kecil dan menengah: profil, produk, dan kontak.</p></div>
+      <div class="rv" style="--d:.12s"><h3>Landing page</h3><p>Satu halaman dengan satu tujuan, misalnya pendaftaran, penjualan, atau promosi.</p></div>
+      <div class="rv" style="--d:.24s"><h3>Redesign</h3><p>Merapikan website lama agar lebih cepat, jelas, dan nyaman di semua perangkat.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="kontak">
+  <div class="wrap contact">
+    <div class="rv">
+      <h2>Kontak</h2>
+      <p>Ceritakan website yang kamu butuhkan. Saya balas secepatnya.</p>
+      <div class="channels">
+        <a href="https://wa.me/6282141411298">WhatsApp: 0821-4141-1298</a>
+        <a href="mailto:ledesign@gmail.com">Email: ledesign@gmail.com</a>
+      </div>
+    </div>
+    <form id="form" class="rv" style="--d:.15s">
+      <label>Nama <input name="nama" required autocomplete="name" placeholder="Nama kamu"></label>
+      <label>Kebutuhan website <textarea name="pesan" required placeholder="Contoh: landing page untuk jualan kue, target selesai bulan depan"></textarea></label>
+      <button class="btn primary" type="submit">Kirim lewat WhatsApp</button>
+      <p class="note">Tombol ini membuka WhatsApp dengan pesan yang sudah terisi.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr">2026</span> LeDesign – Creative Web Design. AI Bikin Cepat, Saya Bikin Tepat.</div>
+</footer>
+
+<script>
+  var NOMOR_WA = "6282141411298";
+  var d = document, root = d.documentElement;
+  root.classList.add("js");
+  d.getElementById("yr").textContent = new Date().getFullYear();
+
+  // Muncul saat di-scroll
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.15});
+  d.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  // Progress bar, header, menu aktif
+  var bar = d.getElementById("progress"), head = d.getElementById("top");
+  var links = [].slice.call(d.querySelectorAll("nav a"));
+  var secs = links.map(function(a){ return d.querySelector(a.getAttribute("href")); });
+  function onScroll(){
+    var h = root.scrollHeight - innerHeight;
+    bar.style.transform = "scaleX(" + (h > 0 ? scrollY / h : 0) + ")";
+    head.classList.toggle("solid", scrollY > 30);
+    var cur = 0;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top < innerHeight * .4) cur = i; });
+    links.forEach(function(a,i){ a.classList.toggle("on", i === cur); });
+  }
+  addEventListener("scroll", onScroll, {passive:true}); onScroll();
+
+  // Cahaya mengikuti kursor di kartu portofolio
+  d.querySelectorAll(".work").forEach(function(c){
+    c.addEventListener("pointermove", function(e){
+      var r = c.getBoundingClientRect();
+      c.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      c.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+  });
+
+  // Kirim formulir ke WhatsApp
+  d.getElementById("form").addEventListener("submit", function(e){
+    e.preventDefault();
+    var f = new FormData(e.target);
+    var teks = "Halo LeDesign, saya " + f.get("nama") + ". " + f.get("pesan");
+    window.open("https://wa.me/" + NOMOR_WA + "?text=" + encodeURIComponent(teks), "_blank", "noopener");
+  });
+</script>
+</body>
+</html>
